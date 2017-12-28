@@ -1,1 +1,108 @@
-hola
+<!DOCTYPE html>
+<html>
+  <head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, user-scalable=no, initial-scale=1.0, maximum-scale=1.0, minimum-scale=1.0">
+    <title>LogIn</title>
+    <link rel="stylesheet" href="sweetalert2/dist/sweetalert2.min.css">
+    <script src="/socket.io/socket.io.js"></script>
+    <link rel="stylesheet" href="materialize/css/materialize.min.css">
+    <script type="text/javascript" src="jquery-3.2.1.js"></script>
+    <script type="text/javascript" src="js/autorizado.js"></script>
+    <script type="text/javascript" src="sweetalert2/dist/sweetalert2.min.js"></script>
+    <script type="text/javascript" src="materialize/js/materialize.min.js"></script>
+    <link rel="stylesheet" href="iconos.css">
+
+
+
+  </head>
+  <body>
+    <header>
+          <nav>
+        <div class="nav-wrapper  blue darken-1">
+          <a href="#" class="brand-logo center">SGH</a>
+        </div>
+        </nav>
+        </header>
+    <div class="row"><!--INICIA ROW GRANDE------>
+
+      <div class="col s3"><!--pequeño--------->
+        <ul id="slide-out" class="side-nav side-nav fixed collapsible" data-collapsible="accordion">
+            <li><div class="user-view">
+             <a href="#!user"><img style="text-align:center;"src="img/lh.png"></a>
+             <p style="text-align:center;color:#01579b;">SIGESHOP</p>
+            </div></li>
+            <li><div class="divider"></div></li>
+             <li>
+               <div class="collapsible-header"><span class="blue-text name">Citas</span></div>
+               <div class="collapsible-body ">
+              <a id="link_crear_cita" href="//10.10.11.150:3080/menu.html"><p style="text-align:center;color:gray;">Modulo citas</p></a>
+            </div>
+            </li>
+            <li>
+              <div class="collapsible-header"><span class="blue-text name">Admisiones</span></div>
+              <div class="collapsible-body ">
+             <a id="link_crear_cita" href="//10.10.11.150:3000/ingreso"><p style="text-align:center;color:gray;">Hoja de ingresos</p></a>
+             <a id="link_buscar_cita" href="//10.10.11.150:3000/emergencia.html"><p style="text-align:center;color:gray;">Hoja de urgencia</p></a>
+             <a id="link_sticker" href="//10.10.11.150:3080/stickers.html"><p style="text-align:center;color:gray;">Imprmir sticker</p></a>
+             <a id="link_consulta" href="//10.10.11.150:3080/buscar.html"><p style="text-align:center;color:gray;">Busqueda Expediente</p></a>
+           </div>
+           </li>
+           <li>
+             <div class="collapsible-header"><span class="blue-text name">Archivos</span></div>
+             <div class="collapsible-body ">
+            <a id="link_crear_cita" href="//10.10.11.150:3080/archivo.html"><p style="text-align:center;color:gray;">Modulo archivos</p></a>
+          </div>
+          </li>
+          </ul>
+          <a id="icono" href="#" data-activates="slide-out" class="button-collapse"><img  src="img/lh.png"></a><!--agregar id=icono a la etiqueta +----->
+
+      </div>
+<!---inicia GRID DERECHA---------->
+         <div id="columnagrande" class="col s9"><!--INICIA DIV DERECHA----->
+           <!-- contenido -->
+             <div id="crear_citas" style="display:none;"><!--INICIA DIV DE CREAR CITAS----------->
+            <!--INICIA CONTAINER----->
+              <div class="row">
+                <br><br>
+                 <h2  id="titulo" class=" blue-text text-darken-2">SGH</h2>
+                  <br>
+              </div><!--fin del row------>
+
+
+        </div><!--FIN DIV CREAR CITAS--------->
+
+
+        <!--INICIA DIV PARA BUSQUEDA DE CITA               pediatria segundo nivel revisar tinta S----------->
+          <div  id="busqueda_cita">
+            <div ID='div_bienvenido' class="col s9"  style="display:none"><!--grande--------->
+            <div>
+              <p  class="center-align flow-text">BIENVENIDO</p>
+              <p  class="center-align flow-text">SISTEMA DE GESTIÓN HOSPITALARIA</p>
+            </div>
+
+          </div>
+
+         </div><!--FIN DIV DE BUSQUEDA DE CITAS-------->
+
+       </div><!--FIN GRID DERECHA------------->
+
+     </div><!--FIN ROW PRINCIPAL----------->
+
+     <div class="fixed-action-btn" style="bottom: 45px; right: 24px;">
+          <a id="menu" class="btn btn-floating btn-large cyan">   <div class="icon-preview col s6 m3"><i class="material-icons dp48">exit_to_app</i><span>LogOut</span></div></a>
+        </div>
+
+        <div class="tap-target cyan" data-activates="menu">
+          <div class="tap-target-content white-text">
+            <h5>Aca puedes Cerrar Sesion</h5>
+            <p class="white-text">Es importante que al terminar cierres tu sesion.</p>
+          </div>
+        </div>
+
+
+
+
+
+  </body>
+</html>

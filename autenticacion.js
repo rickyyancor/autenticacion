@@ -11,6 +11,7 @@ app.use(bodyParser.urlencoded({     // to support URL-encoded bodies
 }));
 app.use('/', express.static(__dirname + '/html/'));
 var server = app.listen(PORT);
+
 var io = require('socket.io').listen(server);
 var redis = require("redis"),
     client = redis.createClient();
@@ -24,25 +25,40 @@ io.on('connection', function(socket) {
   //io.sockets.connected[cl].emit('mensaje','hola');
 
   var cookief =socket.handshake.headers.cookie;
-  var cookies = cookie.parse(socket.handshake.headers.cookie);
-  if(cookies.user_id!=null)
+  var cookies;
+  if(socket.handshake.headers.cookie!=null)
   {
-    client.get(cookies.user_id, function (err, reply) {
-      if(reply)
-        {
-          if(cookies.keyword==reply)
+    console.log(socket.handshake.headers.cookie)
+    cookies = cookie.parse(socket.handshake.headers.cookie);
+    if(cookies.user_id!=null)
+    {
+      client.get(cookies.user_id, function (err, reply) {
+        if(reply)
           {
-            socket.emit('auth',cookies.user_id);
+            if(cookies.keyword==reply)
+            {
+              socket.emit('auth',cookies.user_id);
+            }
           }
-        }
-        else
-        {
-            console.log('Necesita volver a loggearse');
-            socket.emit('show_login');
-        }
+          else
+          {
+              console.log('Necesita volver a loggearse');
+              socket.emit('show_login');
+          }
 
-    });
+      });
+    }
+    else
+    {
+      socket.emit('show_login');
+    }
   }
+  else
+  {
+    socket.emit('show_login');
+    console.log('else show login')
+  }
+
 
 
 
@@ -71,3 +87,19 @@ socket.on('DoLogOut',function DoLogIn() {
 })
 
     });
+
+
+
+
+
+
+
+
+
+var servidorautenticado=app.listen(90);
+var ioauth = require('socket.io').listen(servidorautenticado);
+
+ioauth.on('connection',function(socket) {
+  console.log('conectado al auth')
+
+})
